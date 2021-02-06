@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500&display=swap');
+body{
+    font-family: 'Kanit', sans-serif;
+}
+
+header{
+    background: #353538;
+    height: 90vh;
+}
+
+.card{
+    text-align: center;
+}
+.card-1{
+    background: #ea5771;
+    /* padding: 30px 36px; */
+}
+
+.header-text{
+    z-index: 100;
+}
+
+.header-text h1{
+    color: #ea5771;
+    font-size: 4rem;
+}
+
+.header-text h5{
+    font-size: 1.8rem;
+}
+
+#covid-home{
+    opacity: 0.2;
+}
+
+.card-1 h1{
+    font-size: clamp(3rem, 6.5vw, 5rem);
+}
+
+.card-2{
+    background: #f2c94c;
+}
+
+.card-3{
+    background: #039245;
+}
+
+.card-4{
+    background: #d22d36;
+}
+
+.card-body{
+    align-items: center;
+
+}
+
+.status{
+    border: 1px solid transparent;
+    background: #fff;
+    border-radius: 5px;
+    color: #353538;
+    display: flex;
+}
+
+.fa-equals{
+    font-size: 0.8rem;
+}
+
+section{
+    height: 100vh;
+}
+
+.font-style{
+    font-size: 0.8rem;
+    color: #feca57;
+}
+
+.font-style::before{
+    content: "อัปเดตล่าสุดเมื่อ ";
+    color: #ffffff;
+}

@@ -23,10 +23,6 @@
     $covid_case = json_decode($get_SumCase);
     $covid_timeline = json_decode($get_timeline);
 
-    // echo "<pre>";
-    // print_r($covid_timeline);
-    // echo "</pre>";
-
     $Confirmed = $covid_data->Confirmed;
     $Recovered = $covid_data->Recovered;
     $Hospitalized = $covid_data->Hospitalized;
@@ -41,24 +37,14 @@
     $Nation = $covid_case->Nation;
     $Gender = $covid_case->Gender;
 
+    $up = "<i class='fas fa-angle-double-up'></i> เพิ่มขึ้น";
+    $down = "<i class='fas fa-angle-double-down'></i> ลดลง";
+    $equal = "<i class='fas fa-equals'></i> คงที่";
+
     $tl_Date = $covid_timeline->Data;
-    echo "<pre>";
-    print_r($tl_Date[0]);
-    echo "</pre>";
-    $i = 0;
-    // foreach ($tl_Date as $value) {
-    //     echo $tl_Date[$i]->Date . " ";
-    //     $i += 30;
-    // }
-
-    // $n = 0;
-    // foreach($tl_Date as $value) {
-    //     $time = strtotime($tl_Date[$n]->Date);
-    //     $newformat = date("d/m/Y", $time);
-    //     echo $newformat . "<br>";
-    //     $n += 1;
-    // }
-
+    // echo "<pre>";
+    // print_r($tl_Date[0]);
+    // echo "</pre>";
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
         <div class="container">
@@ -72,7 +58,7 @@
                         <a href="#" class="nav-link active" aria-current="page">ประเทศไทย</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">กราฟ</a>
+                        <a href="#chart" class="nav-link">กราฟ</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">ทั่วโลก</a>
@@ -99,9 +85,11 @@
                         <div class="card-body d-flex justify-content-between">
                             <div class="col-4">
                                 ผู้ติดเชื้อสะสม
-                                <div class="status p-sm-2 mt-md-4">
-                                    <?php echo ($NewConfirmed != 0 ? "<i class='fas fa-angle-double-up'></i>เพิ่มขึ้น" : "<i class='fas fa-equals'></i>คงที่"); ?>
-                                    <?php echo number_format($NewConfirmed); ?>
+                                <div class="status p-sm-2 mt-md-4 justify-content-between">
+                                    <span>
+                                        <?php echo ($NewConfirmed != 0 ? ($NewConfirmed > 0 ? $up : $down) : $equal); ?>
+                                    </span>
+                                    <span><?php echo abs(number_format($NewConfirmed)); ?></span>
                                 </div>
                             </div>
                             <div class="col-8">
@@ -117,9 +105,11 @@
                                         กำลังรักษา
                                     </div>
                                     <h1><?php echo number_format($Hospitalized); ?></h1>
-                                    <div class="status p-sm-2">
-                                        <?php echo ($NewHospitalized != 0 ? "<i class='fas fa-angle-double-up'></i> เพิ่มขึ้น" : "<i class='fas fa-equals'></i> คงที่"); ?>
-                                        <?php echo number_format($NewHospitalized); ?>
+                                    <div class="status p-sm-2 justify-content-between">
+                                        <span>
+                                            <?php echo ($NewHospitalized != 0 ? ($NewHospitalized > 0 ? $up : $down) : $equal); ?>
+                                        </span>
+                                        <span><?php echo abs(number_format($NewHospitalized)); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -131,9 +121,11 @@
                                         หายแล้ว
                                     </div>
                                     <h1><?php echo number_format($Recovered); ?></h1>
-                                    <div class="status p-sm-2">
-                                        <?php echo ($NewRecovered != 0 ? "<i class='fas fa-angle-double-up'></i> เพิ่มขึ้น" : "<i class='fas fa-equals'></i> คงที่"); ?>
-                                        <?php echo number_format($NewRecovered); ?>
+                                    <div class="status p-sm-2 justify-content-between">
+                                        <span>
+                                            <?php echo ($NewRecovered != 0 ? ($NewRecovered > 0 ? $up : $down) : $equal); ?>
+                                        </span>
+                                        <span><?php echo abs(number_format($NewRecovered)); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -145,9 +137,11 @@
                                         เสียชีวิต
                                     </div>
                                     <h1><?php echo number_format($Deaths); ?></h1>
-                                    <div class="status p-sm-2">
-                                        <?php echo ($NewDeaths != 0 ? "<i class='fas fa-angle-double-up'></i> เพิ่มขึ้น" : "<i class='fas fa-equals'></i> คงที่"); ?>
-                                        <?php echo number_format($NewDeaths); ?>
+                                    <div class="status p-sm-2 justify-content-between">
+                                        <span>
+                                            <?php echo ($NewDeaths != 0 ? ($NewDeaths > 0 ? $up : $down) : $equal); ?>
+                                        </span>
+                                        <span><?php echo abs(number_format($NewDeaths)); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -158,92 +152,108 @@
         </div>
     </header>
 
-    <div class="card">
+    <!-- <section class="" id="chart">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
                     <h1>แนวโน้มการติดโควิด</h1>
+                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-    <h1 id="date"></h1>
+    <section>
+        <div class="container-lg">
+            <div class="row">
+                <div class="col"></div>
+            </div>
+        </div>
+    </section> -->
+
+    
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
             type: 'line',
+
+            // The data for our dataset
             data: {
-                labels: [<?php $n = 0;
+                labels: [<?php
+                            $n = 0;
                             foreach ($tl_Date as $value) {
-                                $time = strtotime($tl_Date[$n]->Date);
-                                $newformat = date($time);
-                                echo $newformat . ", ";
+                                echo $tl_Date[$n]->Date . ', ';
                                 $n += 1;
                             }
                             ?>],
                 datasets: [{
                         label: 'ผู้ติดเชื้อ',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            '#ea5771',
-                        ],
-                        borderColor: [
-                            '#ea5771',
-                        ],
+                        fill: false,
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [<?php
+                                $n = 0;
+                                foreach ($tl_Date as $value) {
+                                    echo $tl_Date[$n]->NewConfirmed . ', ';
+                                    $n += 1;
+                                }
+                                ?>],
                         borderWidth: 1
                     },
                     {
                         label: 'กำลังรักษา',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            '#f2c94c',
-
-                        ],
-                        borderColor: [
-                            '#f2c94c',
-                        ],
+                        fill: false,
+                        backgroundColor: '#f2c94c',
+                        borderColor: '#f2c94c',
+                        data: [<?php
+                                $n = 0;
+                                foreach ($tl_Date as $value) {
+                                    echo $tl_Date[$n]->NewHospitalized . ', ';
+                                    $n += 1;
+                                }
+                                ?>],
                         borderWidth: 1
                     },
                     {
                         label: 'หายแล้ว',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            '#039245',
-
-                        ],
-                        borderColor: [
-                            '#039245',
-                        ],
+                        fill: false,
+                        backgroundColor: '#039245',
+                        borderColor: '#039245',
+                        data: [<?php
+                                $n = 0;
+                                foreach ($tl_Date as $value) {
+                                    echo $tl_Date[$n]->NewHospitalized . ', ';
+                                    $n += 1;
+                                }
+                                ?>],
                         borderWidth: 1
                     },
                     {
                         label: 'เสียชีวิต',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            '#d22d36',
-
-                        ],
-                        borderColor: [
-                            '#d22d36',
-                        ],
+                        fill: false,
+                        backgroundColor: '#d22d36',
+                        borderColor: '#d22d36',
+                        data: [<?php
+                                $n = 0;
+                                foreach ($tl_Date as $value) {
+                                    echo $tl_Date[$n]->NewHospitalized . ', ';
+                                    $n += 1;
+                                }
+                                ?>],
                         borderWidth: 1
                     }
+
                 ]
             },
+
+            // Configuration options go here
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
+
             }
         });
     </script>
-
+    
     <!-- <script src="assets/js/ChartJs.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js" integrity="sha512-0bCDSnaX8FOD9Mq8WbHcDwshXwCB5V4EP+UBu87WQgga2b7lAsuEbaSmIZjH/XEmNhJuhrPbFHemre5HZwrk9w==" crossorigin="anonymous"></script>
     <script src="assets/js/app.js"></script>

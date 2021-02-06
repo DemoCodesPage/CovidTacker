@@ -60,7 +60,12 @@ header{
     border-radius: 5px;
     color: #353538;
     display: flex;
+    justify-content: space-between;
 }
+/* 
+.status span:nth-child(1){
+    margin-left: 30px;
+} */
 
 .fa-equals{
     font-size: 0.8rem;

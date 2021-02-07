@@ -4,55 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/font-awesome/css/all.css">
     <script defer src="/assets/font-awesome/js/all.js"></script>
-    <!-- <link rel="stylesheet" href="/node_modules/chart.js/dist/Chart.min.css">
-    <script src="/node_modules/chart.js/dist/Chart.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <title>Covid-19</title>
 </head>
 
 <body>
-    <?php
-    $get_SumCase = file_get_contents('https://covid19.th-stat.com/api/open/cases/sum');
-    $get_dataToday = file_get_contents('https://covid19.th-stat.com/api/open/today');
-    $get_timeline = file_get_contents('https://covid19.th-stat.com/api/open/timeline');
-    $covid_data = json_decode($get_dataToday);
-    $covid_case = json_decode($get_SumCase);
-    $covid_timeline = json_decode($get_timeline);
-
-    $Confirmed = $covid_data->Confirmed;
-    $Recovered = $covid_data->Recovered;
-    $Hospitalized = $covid_data->Hospitalized;
-    $Deaths = $covid_data->Deaths;
-    $NewConfirmed = $covid_data->NewConfirmed;
-    $NewRecovered = $covid_data->NewRecovered;
-    $NewHospitalized = $covid_data->NewHospitalized;
-    $NewDeaths = $covid_data->NewDeaths;
-    $UpdateDate = $covid_data->UpdateDate;
-
-    $Province = $covid_case->Province;
-    $Nation = $covid_case->Nation;
-    $Gender = $covid_case->Gender;
-
-    $up = "<i class='fas fa-angle-double-up'></i> เพิ่มขึ้น";
-    $down = "<i class='fas fa-angle-double-down'></i> ลดลง";
-    $equal = "<i class='fas fa-equals'></i> คงที่";
-
-    $tl_Date = $covid_timeline->Data;
-    // echo "<pre>";
-    // print_r($tl_Date[0]);
-    // echo "</pre>";
-    ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
-        <div class="container">
+        <div class="container-md">
             <a href="#" class="navbar-brand">Covid Tracker</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse justify-content-end">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a href="#" class="nav-link active" aria-current="page">ประเทศไทย</a>
@@ -80,20 +49,18 @@
                     <div id="covid-home"></div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6">
-                    <span class="font-style"><?php echo $UpdateDate ?></span>
+                    <span class="font-style" id="Update"></span>
                     <div class="card shadow-sm card-1 p-lg-3 mb-4">
                         <div class="card-body d-flex justify-content-between">
                             <div class="col-4">
                                 ผู้ติดเชื้อสะสม
                                 <div class="status p-sm-2 mt-md-4 justify-content-between">
-                                    <span>
-                                        <?php echo ($NewConfirmed != 0 ? ($NewConfirmed > 0 ? $up : $down) : $equal); ?>
-                                    </span>
-                                    <span><?php echo abs(number_format($NewConfirmed)); ?></span>
+                                    <span id="sConfirmed"></span>
+                                    <span id="NewConfirmed"></span>
                                 </div>
                             </div>
                             <div class="col-8">
-                                <h1><?php echo number_format($Confirmed); ?></h1>
+                                <h1 id="Confirmed"></h1>
                             </div>
                         </div>
                     </div>
@@ -104,12 +71,10 @@
                                     <div class="card-title card-style">
                                         กำลังรักษา
                                     </div>
-                                    <h1><?php echo number_format($Hospitalized); ?></h1>
+                                    <h1 id="Hospitalized"></h1>
                                     <div class="status p-sm-2 justify-content-between">
-                                        <span>
-                                            <?php echo ($NewHospitalized != 0 ? ($NewHospitalized > 0 ? $up : $down) : $equal); ?>
-                                        </span>
-                                        <span><?php echo abs(number_format($NewHospitalized)); ?></span>
+                                        <span id="sHospitalized"></span>
+                                        <span id="NewHospitalized"></span>
                                     </div>
                                 </div>
                             </div>
@@ -120,12 +85,10 @@
                                     <div class="card-title card-style">
                                         หายแล้ว
                                     </div>
-                                    <h1><?php echo number_format($Recovered); ?></h1>
+                                    <h1 id="Recovered"></h1>
                                     <div class="status p-sm-2 justify-content-between">
-                                        <span>
-                                            <?php echo ($NewRecovered != 0 ? ($NewRecovered > 0 ? $up : $down) : $equal); ?>
-                                        </span>
-                                        <span><?php echo abs(number_format($NewRecovered)); ?></span>
+                                        <span id="sRecovered"></span>
+                                        <span id="NewRecovered"></span>
                                     </div>
                                 </div>
                             </div>
@@ -136,12 +99,10 @@
                                     <div class="card-title card-style">
                                         เสียชีวิต
                                     </div>
-                                    <h1><?php echo number_format($Deaths); ?></h1>
+                                    <h1 id="Deaths"></h1>
                                     <div class="status p-sm-2 justify-content-between">
-                                        <span>
-                                            <?php echo ($NewDeaths != 0 ? ($NewDeaths > 0 ? $up : $down) : $equal); ?>
-                                        </span>
-                                        <span><?php echo abs(number_format($NewDeaths)); ?></span>
+                                        <span id="sDeaths"></span>
+                                        <span id="NewDeaths"></span>
                                     </div>
                                 </div>
                             </div>
@@ -171,8 +132,8 @@
         </div>
     </section> -->
 
-    
-    <script>
+
+    <!-- <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -253,11 +214,13 @@
             }
         });
     </script>
-    
-    <!-- <script src="assets/js/ChartJs.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js" integrity="sha512-0bCDSnaX8FOD9Mq8WbHcDwshXwCB5V4EP+UBu87WQgga2b7lAsuEbaSmIZjH/XEmNhJuhrPbFHemre5HZwrk9w==" crossorigin="anonymous"></script>
+     -->
+    <script src="assets/js/data_covid.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"
+        integrity="sha512-0bCDSnaX8FOD9Mq8WbHcDwshXwCB5V4EP+UBu87WQgga2b7lAsuEbaSmIZjH/XEmNhJuhrPbFHemre5HZwrk9w=="
+        crossorigin="anonymous"></script>
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

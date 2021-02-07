@@ -40,6 +40,10 @@ header{
 .card-2{
     background: #f2c94c;
 }
+/* 
+.card-2 h1{
+    font-size: clamp(2rem, 3vw, 3rem);
+} */
 
 .card-3{
     background: #039245;
@@ -59,8 +63,7 @@ header{
     background: #fff;
     border-radius: 5px;
     color: #353538;
-    display: flex;
-    justify-content: space-between;
+
 }
 /* 
 .status span:nth-child(1){

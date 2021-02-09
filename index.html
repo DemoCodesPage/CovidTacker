@@ -112,8 +112,52 @@
             </div>
         </div>
     </header>
-    
-    <script src="assets/js/data_covid.js"></script>
+
+    <section class="" id="chart">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex align-items-center mt-5">
+                        <i class="fas fa-chart-line me-3"></i>
+                        <h1>แนวโน้มการติดเชื้อ COVID-19</h1>
+                    </div>
+                    <span id="ChartUpdate"></span>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="Tab1-tab" data-bs-toggle="tab" href="#Tab1" role="tab"
+                                aria-controls="Tab1" aria-selected="true">ประเทศไทย</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="Tab2-tab" data-bs-toggle="tab" href="#Tab2" role="tab"
+                                aria-controls="Tab2" aria-selected="false">ทั่วโลก</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="TabContent">
+                        <div id="Tab1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Tab1-tab">
+                            <canvas class="my-4 w-100" id="Chart_TH" width="900" height="380"></canvas>
+                        </div>
+                        <div id="Tab2" class="tab-pane fade" role="tabpanel" aria-labelledby="Tab2-tab">
+                            <canvas class="my-4 w-100" id="Chart_World" width="900" height="380"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="assets/js/data_covid.js"></script>
+    <script type="text/javascript" src="assets/js/dataCovid_w.js"></script>
+    <script type="text/javascript" src="assets/js/ChartJs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"
         integrity="sha512-0bCDSnaX8FOD9Mq8WbHcDwshXwCB5V4EP+UBu87WQgga2b7lAsuEbaSmIZjH/XEmNhJuhrPbFHemre5HZwrk9w=="
         crossorigin="anonymous"></script>

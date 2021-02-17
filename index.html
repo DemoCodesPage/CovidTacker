@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- Css -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="assets/font-awesome/css/all.css">
-    <script defer src="/assets/font-awesome/js/all.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <!-- DataTable -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="icon" href="assets/img/virus.svg" type = "image/x-icon">
     <title>Covid-19</title>
 </head>
 
@@ -16,9 +22,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
         <div class="container-md">
             <a href="#" class="navbar-brand">Covid Tracker</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -37,70 +42,70 @@
         </div>
     </nav>
 
-    <header class="text-white">
+    <header class="text-white bg-dark">
         <div class="container-lg h-100">
             <div class="row h-100 align-items-center">
-                <div class="col-sm-12 col-lg-6 header-text">
+                <div class="col-lg-5 header-text">
                     <h5>ยืนยันตัวเลขผู้ติดเชื้อ</h5>
                     <h1>COVID-19</h1>
                     <h5>ทั้งหมดในประเทศไทย</h5>
                 </div>
-                <div class="col-sm-12 col-lg-6 position-absolute">
-                    <div id="covid-home"></div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6">
+                <!-- <div class="position-absolute" id="covid-home"></div> -->
+                <div class="col-lg-7">
                     <span class="font-style" id="Update"></span>
-                    <div class="card shadow-sm card-1 p-lg-3 mb-4">
-                        <div class="card-body d-flex justify-content-between">
-                            <div class="col-4">
-                                ผู้ติดเชื้อสะสม
-                                <div class="status p-sm-2 mt-md-4 justify-content-between">
-                                    <span id="sConfirmed"></span>
-                                    <span id="NewConfirmed"></span>
+                    <div class="card card-1">
+                        <div class="py-4 px-5">
+                            <div class="row d-flex justify-content-between">
+                                <div>
+                                    ผู้ติดเชื้อสะสม
+                                    <div class="status p-2 mt-3">
+                                        <span id="sConfirmed"></span>
+                                        <span id="NewConfirmed"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-8">
-                                <h1 id="Confirmed"></h1>
+                                <div>
+                                    <h1 id="Confirmed"></h1>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="card shadow-sm card-2">
-                                <div class="card-body">
-                                    <div class="card-title card-style">
+                    <div class="row mt-4">
+                        <div class="col">
+                            <div class="card card-2">
+                                <div class="py-4 px-3">
+                                    <div class="card-title">
                                         กำลังรักษา
                                     </div>
                                     <h1 id="Hospitalized"></h1>
-                                    <div class="status p-sm-2 justify-content-between">
+                                    <div class="status p-2">
                                         <span id="sHospitalized"></span>
                                         <span id="NewHospitalized"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="card shadow-sm card-3">
-                                <div class="card-body">
-                                    <div class="card-title card-style">
+                        <div class="col">
+                            <div class="card card-3">
+                                <div class="py-4 px-3">
+                                    <div class="card-title">
                                         หายแล้ว
                                     </div>
                                     <h1 id="Recovered"></h1>
-                                    <div class="status p-sm-2 justify-content-between">
+                                    <div class="status p-2">
                                         <span id="sRecovered"></span>
                                         <span id="NewRecovered"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="card shadow-sm card-4">
-                                <div class="card-body">
-                                    <div class="card-title card-style">
+                        <div class="col">
+                            <div class="card card-4">
+                                <div class="py-4 px-3">
+                                    <div class="card-title">
                                         เสียชีวิต
                                     </div>
                                     <h1 id="Deaths"></h1>
-                                    <div class="status p-sm-2 justify-content-between">
+                                    <div class="status p-2">
                                         <span id="sDeaths"></span>
                                         <span id="NewDeaths"></span>
                                     </div>
@@ -113,55 +118,101 @@
         </div>
     </header>
 
-    <section class="" id="chart">
+    <section class="bg-light" id="chart">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
                     <div class="d-flex align-items-center mt-5">
-                        <i class="fas fa-chart-line me-3"></i>
-                        <h1>แนวโน้มการติดเชื้อ COVID-19</h1>
+                        <i class="fas fa-chart-line"></i>
+                        <div class="mx-3">
+                            <span class="h1">แนวโน้มการติดเชื้อ COVID-19</span>
+                            <p class="h4">ในประเทศไทย</p>
+                        </div>
                     </div>
                     <span id="ChartUpdate"></span>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="Tab1-tab" data-bs-toggle="tab" href="#Tab1" role="tab"
+                            <a class="nav-link active" id="Tab1-tab" data-toggle="tab" href="#Tab1" role="tab"
                                 aria-controls="Tab1" aria-selected="true">ประเทศไทย</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="Tab2-tab" data-bs-toggle="tab" href="#Tab2" role="tab"
+                            <a class="nav-link" id="Tab2-tab" data-toggle="tab" href="#Tab2" role="tab"
                                 aria-controls="Tab2" aria-selected="false">ทั่วโลก</a>
                         </li>
-                    </ul>
+                    </ul> -->
                     <div class="tab-content" id="TabContent">
                         <div id="Tab1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Tab1-tab">
                             <canvas class="my-4 w-100" id="Chart_TH" width="900" height="380"></canvas>
                         </div>
-                        <div id="Tab2" class="tab-pane fade" role="tabpanel" aria-labelledby="Tab2-tab">
-                            <canvas class="my-4 w-100" id="Chart_World" width="900" height="380"></canvas>
-                        </div>
+                        <!-- <div id="Tab2" class="" role="tabpanel" aria-labelledby="Tab2-tab">
+                            <table class="table w-100" id="TablePage">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ลำดับ</th>
+                                        <th scope="col">จังหวัด</th>
+                                        <th scope="col">จำนวน</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="TableProvince">
+
+                                </tbody>
+                            </table>
+                        </div> -->
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-light">
+    <section class="bg-dark text-white">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
-                    
+                    <div class="d-flex align-items-center mt-5">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="mx-3">
+                            <span class="h1">แนวโน้มการติดเชื้อ COVID-19</span>
+                            <p class="h4">ทั่วโลก</p>
+                        </div>
+                    </div>
+                    <canvas class="my-4 w-100" id="Chart_World" width="900" height="380"></canvas>
                 </div>
             </div>
         </div>
     </section>
+    
+    <footer class="bgFooter">
+        <div class="container-lg d-flex justify-content-center align-items-center">
+            <span>แหล่งข้อมูล API จาก : </span>
+            <a target="_blank" href="https://covid19.ddc.moph.go.th/th/api">
+                <img src="assets/img/textLogo.png" alt="" class="img-footer">
+            </a>
+        </div>
+    </footer>
 
+    <script>
+        $(document).ready(function () {
+            var table = $('#TablePage').DataTable();
+        });
+    </script>
+
+    <!-- Font Awesome -->
+    <script defer src="/assets/font-awesome/js/all.js"></script>
+    <!-- JavaScript -->
     <script type="text/javascript" src="assets/js/data_covid.js"></script>
+    <script type="text/javascript" src="assets/js/TableData.js"></script>
     <script type="text/javascript" src="assets/js/dataCovid_w.js"></script>
     <script type="text/javascript" src="assets/js/ChartJs.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <!-- Lottie -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"
         integrity="sha512-0bCDSnaX8FOD9Mq8WbHcDwshXwCB5V4EP+UBu87WQgga2b7lAsuEbaSmIZjH/XEmNhJuhrPbFHemre5HZwrk9w=="
         crossorigin="anonymous"></script>
+    <!-- Animation in Lottie -->
     <script src="assets/js/app.js"></script>
+    <!-- Bootstrap -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 

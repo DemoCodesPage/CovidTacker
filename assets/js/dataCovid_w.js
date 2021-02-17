@@ -5,8 +5,8 @@ var requestOptions = {
 
 fetch("https://api.covid19api.com/summary", requestOptions)
     .then(response => response.json().then(data => {
-        console.log(data.Global);
-        console.log(data.Global.TotalConfirmed);
+        // console.log(data.Global);
+        // console.log(data.Global.TotalConfirmed);
         // for (var i = 0; i < data.Countries.length; i++) {
         //     // console.log(data.Countries[i].Country + " " + data.Global);
         // }
@@ -18,7 +18,7 @@ fetch("https://api.covid19api.com/summary", requestOptions)
         let NewRecovered = data.Global.NewRecovered;
         
 
-        var ctx = document.getElementById('Chart_World').getContext('2d');
+        var ctx = document.getElementById('Chart_Worl').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'bar',
@@ -38,12 +38,15 @@ fetch("https://api.covid19api.com/summary", requestOptions)
             },
             // Configuration options go here
             options: {
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: '#FFFFFF',
+                        boxWidth: 15,
+                    }
+                },
                 animation: {
                     dutation: 0
-                },
-                title: {
-                    display: true,
-                    text: 'ข้อมูลผู้ติดเชื้อ Covid-19 ในประเทศไทย'
                 },
                 tooltips: {
                     mode: 'index'
@@ -51,6 +54,14 @@ fetch("https://api.covid19api.com/summary", requestOptions)
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontColor: '#FFFFFF',
+                            beginAtZero: true
+                        }
+                    }],
+
+                    xAxes: [{
+                        ticks: {
+                            fontColor: '#FFFFFF',
                             beginAtZero: true
                         }
                     }]

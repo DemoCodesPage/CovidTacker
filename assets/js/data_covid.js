@@ -32,6 +32,8 @@ fetch("https://covid19.th-stat.com/api/open/today")
         status(data.NewRecovered, sRecovered)
         status(data.NewDeaths, sDeaths)
 
+        // console.log(data);
+
     }))
     .catch(err => {
         console.log(err);

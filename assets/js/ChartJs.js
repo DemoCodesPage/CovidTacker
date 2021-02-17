@@ -10,7 +10,7 @@ var thmonth = new Array("", "ม.ค.", "ก.พ.", "มี.ค.",
     "ต.ค.", "พ.ย.", "ธ.ค.");
 
 fetch("https://covid19.th-stat.com/api/open/timeline")
-    .then(response => response.json().then(data => {   
+    .then(response => response.json().then(data => {
         for (var i = 0; i < data.Data.length; i++) {
             confirmed.push(data.Data[i].Confirmed);
             hospitalized.push(data.Data[i].Hospitalized);
@@ -78,12 +78,14 @@ fetch("https://covid19.th-stat.com/api/open/timeline")
             },
             // Configuration options go here
             options: {
+                legend: {
+                    display: true,
+                    labels: {
+                        boxWidth: 15,
+                    }
+                },
                 animation: {
                     dutation: 0
-                },
-                title: {
-                    display: true,
-                    text: 'ข้อมูลผู้ติดเชื้อ Covid-19 ในประเทศไทย'
                 },
                 tooltips: {
                     mode: 'index',
@@ -91,7 +93,7 @@ fetch("https://covid19.th-stat.com/api/open/timeline")
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
                         }
                     }]
                 }
@@ -142,12 +144,33 @@ fetch("https://covid19.th-stat.com/api/open/timeline")
             },
             // Configuration options go here
             options: {
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: '#FFFFFF',
+                        boxWidth: 15,
+                    }
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
+                            fontColor: '#FFFFFF',
                             beginAtZero: true
                         }
-                    }]
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            // type: 'time',
+                            // time: {
+                            //     displayFormats:{
+                            //         quarter: 'MMM YYYY'
+                            //     }
+                            // },
+                            // distribution: 'series',
+                            fontColor: '#FFFFFF',
+                            beginAtZero: true
+                        }
+                    }],
                 }
             }
         });

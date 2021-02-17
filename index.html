@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
-    <link rel="icon" href="assets/img/virus.svg" type = "image/x-icon">
+    <link rel="icon" href="assets/img/virus.svg" type="image/x-icon">
     <title>Covid-19</title>
 </head>
 
@@ -35,7 +35,7 @@
                         <a href="#chart" class="nav-link">กราฟ</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">ทั่วโลก</a>
+                        <a href="#world-page" class="nav-link">ทั่วโลก</a>
                     </li>
                 </ul>
             </div>
@@ -50,27 +50,31 @@
                     <h1>COVID-19</h1>
                     <h5>ทั้งหมดในประเทศไทย</h5>
                 </div>
-                <!-- <div class="position-absolute" id="covid-home"></div> -->
+                <div class="position-absolute w-50" id="covid-home"></div>
                 <div class="col-lg-7">
-                    <span class="font-style" id="Update"></span>
-                    <div class="card card-1">
-                        <div class="py-4 px-5">
-                            <div class="row d-flex justify-content-between">
-                                <div>
-                                    ผู้ติดเชื้อสะสม
-                                    <div class="status p-2 mt-3">
-                                        <span id="sConfirmed"></span>
-                                        <span id="NewConfirmed"></span>
+                    <div class="row px-1">
+                        <span class="font-style" id="Update"></span>
+                        <div class="col-12 nopadding">
+                            <div class="card card-1">
+                                <div class="py-4 px-5">
+                                    <div class="row d-flex justify-content-between">
+                                        <div>
+                                            ผู้ติดเชื้อสะสม
+                                            <div class="status p-2 mt-3">
+                                                <span id="sConfirmed"></span>
+                                                <span id="NewConfirmed"></span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h1 id="Confirmed"></h1>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <h1 id="Confirmed"></h1>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col">
+                    <div class="row mt-3 px-1">
+                        <div class="col nopadding">
                             <div class="card card-2">
                                 <div class="py-4 px-3">
                                     <div class="card-title">
@@ -98,7 +102,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col nopadding">
                             <div class="card card-4">
                                 <div class="py-4 px-3">
                                     <div class="card-title">
@@ -118,11 +122,11 @@
         </div>
     </header>
 
-    <section class="bg-light" id="chart">
+    <section class="bg-light pt-5" id="chart">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
-                    <div class="d-flex align-items-center mt-5">
+                    <div class="d-flex align-items-center">
                         <i class="fas fa-chart-line"></i>
                         <div class="mx-3">
                             <span class="h1">แนวโน้มการติดเชื้อ COVID-19</span>
@@ -165,11 +169,11 @@
         </div>
     </section>
 
-    <section class="bg-dark text-white">
+    <section class="bg-dark text-white pt-5" id="world-page">
         <div class="container-lg">
             <div class="row">
                 <div class="col">
-                    <div class="d-flex align-items-center mt-5">
+                    <div class="d-flex align-items-center">
                         <i class="fas fa-chart-line"></i>
                         <div class="mx-3">
                             <span class="h1">แนวโน้มการติดเชื้อ COVID-19</span>
@@ -181,7 +185,7 @@
             </div>
         </div>
     </section>
-    
+
     <footer class="bgFooter">
         <div class="container-lg d-flex justify-content-center align-items-center">
             <span>แหล่งข้อมูล API จาก : </span>

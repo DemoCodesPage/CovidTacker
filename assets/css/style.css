@@ -1,111 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500&display=swap');
-body{
-    font-family: 'Kanit', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;500&display=swap");
+body {
+    font-family: "Kanit", sans-serif;
 }
 
-header{
+header {
     height: 90vh;
 }
 
-.card{
+.card {
     text-align: center;
 }
 
-.card-1{
+.card-1 {
     background: #ea5771;
     /* padding: 30px 36px; */
 }
 
-.header-text{
+.header-text {
     z-index: 100;
 }
 
-.header-text h1{
+.header-text h1 {
     color: #ea5771;
     font-size: 4rem;
 }
 
-.header-text h5{
+.header-text h5 {
     font-size: 1.8rem;
 }
 
-#covid-home{
+#covid-home {
     opacity: 0.2;
 }
 
-.card-1 h1{
+.card-1 h1 {
     font-size: clamp(3.5rem, 5vw, 4.5rem);
 }
 
-.card-2{
+.card-2 {
     background: #f2c94c;
 }
 
-.card-2 h1{
+.card-2 h1 {
     font-size: clamp(1.3rem, 3vw, 3.5rem);
 }
 
-.card-3{
+.card-3 {
     background: #039245;
 }
 
-.card-3 h1{
+.card-3 h1 {
     font-size: clamp(1.3rem, 3vw, 3.5rem);
 }
 
-.card-4{
+.card-4 {
     background: #d22d36;
 }
 
-.card-4 h1{
+.card-4 h1 {
     font-size: clamp(1.3rem, 3vw, 3.5rem);
 }
 
-.card-body{
+.card-body {
     align-items: center;
-
 }
 
-.status{
+.status {
     border: 1px solid transparent;
     background: #fff;
     border-radius: 5px;
     color: #353538;
 }
 
-.fa-equals{
+.fa-equals {
     font-size: 0.8rem;
 }
 
-.fa-chart-line{
+.fa-chart-line {
     font-size: 2.5rem;
 }
 
-.font-style{
+.font-style {
     font-size: 0.8rem;
     color: #feca57;
 }
 
-.font-style::before{
+.font-style::before {
     content: "อัปเดตล่าสุดเมื่อ ";
     color: #ffffff;
 }
 
-#ChartUpdate{
+#ChartUpdate {
     font-size: 0.8rem;
     color: #353538d0;
     color: #feca57;
 }
 
-#ChartUpdate::before{
+#ChartUpdate::before {
     content: "อัปเดตล่าสุดเมื่อ ";
     color: #353538d0;
 }
 
-.img-footer{
+.img-footer {
     width: 8rem;
 }
 
-.bgFooter{
+.bgFooter {
     background: whitesmoke;
+}
+.nopadding {
+    padding-left: 0;
+    padding-right: 0;
 }

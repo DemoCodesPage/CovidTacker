@@ -34,7 +34,7 @@ header {
 }
 
 .card-1 h1 {
-    font-size: clamp(3.5rem, 5vw, 4.5rem);
+    font-size: clamp(3.5rem, 5vw, 5rem);
 }
 
 .card-2 {
@@ -67,9 +67,13 @@ header {
 
 .status {
     border: 1px solid transparent;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.842);
     border-radius: 5px;
     color: #353538;
+}
+
+.status span:nth-child(1){
+    margin-right: 1vw;
 }
 
 .fa-equals {
@@ -111,4 +115,41 @@ header {
 .nopadding {
     padding-left: 0;
     padding-right: 0;
+}
+
+.head-font span{
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.head-font span::after{
+    content: " COVID-19";
+    color: #ea5771;
+}
+
+.head-font p{
+    font-size: clamp(1rem, 4vw, 2rem);
+}
+
+.fa-angle-double-down,
+.card-1 .fa-angle-double-up{
+    color: #ea5771;
+}
+
+.fa-angle-double-down,
+.card-2 .fa-angle-double-up{
+    color: #feca57;
+}
+
+.fa-angle-double-down,
+.card-3 .fa-angle-double-up{
+    color: #039245;
+}
+
+.fa-angle-double-down,
+.card-4 .fa-angle-double-up{
+    color: #d22d36;
+}
+
+.fa-equals{
+    color: grey;
 }

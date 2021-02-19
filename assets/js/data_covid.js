@@ -14,6 +14,11 @@ let sHospitalized = document.getElementById('sHospitalized');
 let sRecovered = document.getElementById('sRecovered');
 let sDeaths = document.getElementById('sDeaths');
 
+let confirmeds = document.getElementById('confirmeds');
+let hospitalizeds = document.getElementById('hospitalizeds');
+let recovereds = document.getElementById('recovereds');
+let death = document.getElementById('deaths');
+
 fetch("https://covid19.th-stat.com/api/open/today")
     .then(response => response.json().then(data => {
         Confirmed.innerHTML = comma(data.Confirmed);
@@ -21,6 +26,11 @@ fetch("https://covid19.th-stat.com/api/open/today")
         Recovered.innerHTML = comma(data.Recovered);
         Deaths.innerHTML = comma(data.Deaths);
         Update.innerHTML = data.UpdateDate;
+
+        confirmeds.innerHTML = comma(data.Confirmed);
+        hospitalizeds.innerHTML = comma(data.Hospitalized);
+        recovereds.innerHTML = comma(data.Recovered);
+        death.innerHTML = comma(data.Deaths);
 
         NewConfirmed.innerHTML = Math.abs(comma(data.NewConfirmed));
         NewHospitalized.innerHTML = Math.abs(comma(data.NewHospitalized));
@@ -48,8 +58,5 @@ function status(value, doc) {
 }
 
 function comma(x) {
-    // (new Intl.NumberFormat('en-CA', {
-    //     style: 'decimal'
-    // }).format(x));
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

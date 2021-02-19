@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;500&display=swap");
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Kanit", sans-serif;
 }
@@ -96,8 +100,7 @@ header {
 
 #ChartUpdate {
     font-size: 0.8rem;
-    color: #353538d0;
-    color: #feca57;
+    color: #f39c12;
 }
 
 #ChartUpdate::before {
@@ -127,29 +130,64 @@ header {
 }
 
 .head-font p{
-    font-size: clamp(1rem, 4vw, 2rem);
+    font-size: clamp(1rem, 4vw, 1.5rem);
 }
 
-.fa-angle-double-down,
 .card-1 .fa-angle-double-up{
     color: #ea5771;
 }
 
-.fa-angle-double-down,
 .card-2 .fa-angle-double-up{
     color: #feca57;
 }
 
-.fa-angle-double-down,
 .card-3 .fa-angle-double-up{
     color: #039245;
 }
 
-.fa-angle-double-down,
 .card-4 .fa-angle-double-up{
     color: #d22d36;
 }
 
+.fa-angle-double-down{
+    color: #EA2027;
+}
+
 .fa-equals{
-    color: grey;
+    color: #596275;
+}
+
+.score{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.score h4{
+    margin: 0 0.5vw;
+}
+
+.colunm{
+    text-align: center;
+}
+
+.colunm:nth-child(1) h4{
+    color: #ea5771;
+}
+
+.colunm:nth-child(2) h4{
+    color: #feca57;
+}
+
+.colunm:nth-child(3) h4{
+    color: #039245;
+}
+
+.colunm:nth-child(4) h4{
+    color: #d22d36;
+}
+
+.between-row{
+    display: flex;
+    justify-content: space-between;
 }

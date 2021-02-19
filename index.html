@@ -20,8 +20,8 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
-        <div class="container-md">
-            <a href="#" class="navbar-brand">Covid Tracker</a>
+        <div class="container-lg">
+            <a href="index.html" class="navbar-brand">Covid Tracker</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
@@ -29,13 +29,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">ประเทศไทย</a>
+                        <a href="index.html" class="nav-link active" aria-current="page">ประเทศไทย</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#chart" class="nav-link">กราฟ</a>
+                        <a href="#chartTH" class="nav-link">กราฟ</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#world-page" class="nav-link">ทั่วโลก</a>
+                        <a href="#chartWorld" class="nav-link">ทั่วโลก</a>
                     </li>
                 </ul>
             </div>
@@ -122,10 +122,10 @@
         </div>
     </header>
 
-    <section class="bg-light pt-5" id="chart">
+    <section class="bg-light pt-5" id="chartTH">
         <div class="container-lg">
-            <div class="row">
-                <div class="col">
+            <div class="row between-row">
+                <div class="">
                     <div class="d-flex align-items-center">
                         <i class="fas fa-chart-line"></i>
                         <div class="mx-3 head-font">
@@ -133,55 +133,71 @@
                             <p>ในประเทศไทย</p>
                         </div>
                     </div>
-                    <span id="ChartUpdate"></span>
-                    <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="Tab1-tab" data-toggle="tab" href="#Tab1" role="tab"
-                                aria-controls="Tab1" aria-selected="true">ประเทศไทย</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="Tab2-tab" data-toggle="tab" href="#Tab2" role="tab"
-                                aria-controls="Tab2" aria-selected="false">ทั่วโลก</a>
-                        </li>
-                    </ul> -->
-                    <div class="tab-content" id="TabContent">
-                        <div id="Tab1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Tab1-tab">
-                            <canvas class="my-4 w-100" id="Chart_TH" width="900" height="380"></canvas>
+                </div>
+                <div class="score d-none d-md-block">
+                    <div class="row">
+                        <div class="colunm">
+                            <label for="">ผู้ติดเชื้อ</label>
+                            <h4 id="confirmeds"></h4>
                         </div>
-                        <!-- <div id="Tab2" class="" role="tabpanel" aria-labelledby="Tab2-tab">
-                            <table class="table w-100" id="TablePage">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ลำดับ</th>
-                                        <th scope="col">จังหวัด</th>
-                                        <th scope="col">จำนวน</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="TableProvince">
-
-                                </tbody>
-                            </table>
-                        </div> -->
-
+                        <div class="colunm">
+                            <label for="">กำลังรักษา</label>
+                            <h4 id="hospitalizeds"></h4>
+                        </div>
+                        <div class="colunm">
+                            <label for="">หายแล้ว</label>
+                            <h4 id="recovereds"></h4>
+                        </div>
+                        <div class="colunm">
+                            <label for="">เสียชีวิต</label>
+                            <h4 id="deaths"></h4>
+                        </div>
+                    </div>
+                    <span id="ChartUpdate"></span>
+                </div>
+                <div class="tab-content">
+                    <div id="Tab1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Tab1-tab">
+                        <canvas class="my-4 w-100" id="Chart_TH" width="900" height="380"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-dark text-white pt-5" id="world-page">
+    <section class="bg-dark text-white pt-5" id="chartWorld">
         <div class="container-lg">
-            <div class="row">
-                <div class="col">
+            <div class="row between-row">
+                <div class="">
                     <div class="d-flex align-items-center">
                         <i class="fas fa-chart-line"></i>
                         <div class="mx-3 head-font">
                             <span class="h1">แนวโน้มการติดเชื้อ</span>
-                            <p>ทั่วโลก</p>
+                            <p>ทั้งหมดทั่วโลก</p>
                         </div>
                     </div>
-                    <canvas class="my-4 w-100" id="Chart_World" width="900" height="380"></canvas>
                 </div>
+                <div class="score d-none d-md-block">
+                    <div class="row">
+                        <div class="colunm">
+                            <label for="">ผู้ติดเชื้อ</label>
+                            <h4>20000</h4>
+                        </div>
+                        <div class="colunm">
+                            <label for="">กำลังรักษา</label>
+                            <h4>20000</h4>
+                        </div>
+                        <div class="colunm">
+                            <label for="">หายแล้ว</label>
+                            <h4>20000</h4>
+                        </div>
+                        <div class="colunm">
+                            <label for="">เสียชีวิต</label>
+                            <h4>20000</h4>
+                        </div>
+                    </div>
+                    <span id="ChartUpdate"></span>
+                </div>
+                <canvas class="my-4 w-100" id="Chart_World" width="900" height="380"></canvas>
             </div>
         </div>
     </section>

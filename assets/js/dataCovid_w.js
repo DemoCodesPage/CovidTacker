@@ -5,7 +5,7 @@ var requestOptions = {
 
 fetch("https://api.covid19api.com/summary", requestOptions)
     .then(response => response.json().then(data => {
-        // console.log(data.Global);
+        console.log(data);
         // console.log(data.Global.TotalConfirmed);
         // for (var i = 0; i < data.Countries.length; i++) {
         //     // console.log(data.Countries[i].Country + " " + data.Global);
